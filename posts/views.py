@@ -44,7 +44,7 @@ class PostDetail(APIView):
             post, context={'request': request}
         )
         return Response(serializer.data)
-    
+
     def put(self, request, pk):
         post = self.get_object(pk)
         serializer = PostSerializer(
