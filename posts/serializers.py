@@ -9,7 +9,9 @@ class PostSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     like_id = serializers.SerializerMethodField()
-
+    likes_count = serializers.ReadOnlyField()
+    comments_count = serializers.ReadOnlyField()
+    
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner    
@@ -23,4 +25,18 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['id', 'owner', 'is_owner', 'profile_id', 'title', 'content', 'image', 'profile_image', 'created_on', 'last_edit', 'like_id',]
+        fields = [
+            'id',
+            'owner',
+            'is_owner',
+            'profile_id',
+            'title',
+            'content',
+            'image',
+            'profile_image',
+            'created_on',
+            'last_edit',
+            'like_id',
+            'likes_count',
+            'comments_count',
+        ]
