@@ -49,6 +49,7 @@ class PostSerializer(serializers.ModelSerializer):
             'title',
             'content',
             'image',
+            'category',
             'profile_image',
             'created_on',
             'last_edit',

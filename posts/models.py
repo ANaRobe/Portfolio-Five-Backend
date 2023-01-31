@@ -6,12 +6,20 @@ class Post(models.Model):
     """
     Model related to owner, User instance.
     """
+    category_choices = [
+            ('did_you_know', 'Did_you_know'),
+            ('tips&how_tos', 'Tips&how_tos'),
+            ('fun_posts', 'Fun_posts'),
+            ('recommendations', 'Recommendations'),
+            ('other', 'Other')
+        ]
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=300)
     content = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/', default='../pin_default_iicvjx', blank=True
     )
+    category = models.CharField(max_length=50, choices=category_choices, default='none')
     created_on = models.DateTimeField(auto_now=True)
     last_edit = models.DateTimeField(auto_now=True)
 
