@@ -3,7 +3,7 @@ from .models import Form
 from .serializer import FormSerializer
 
 
-class FormtDetail(generics.ListCreateAPIView):
+class FormDetail(generics.ListCreateAPIView):
     serializer_class = FormSerializer
     queryset = Form.objects.all()
 
