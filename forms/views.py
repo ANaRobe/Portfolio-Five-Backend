@@ -6,4 +6,3 @@ from .serializer import FormSerializer
 class FormDetail(generics.ListCreateAPIView):
     serializer_class = FormSerializer
     queryset = Form.objects.all()
-

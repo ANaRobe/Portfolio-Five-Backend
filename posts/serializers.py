@@ -25,12 +25,11 @@ class PostSerializer(serializers.ModelSerializer):
         if value.image.width > 4096:
             raise serializers.ValidationError(
                 'Width must be smaller than 4096px.')
+        return value
 
-        return value    
-            
     def get_is_owner(self, obj):
         request = self.context['request']
-        return request.user == obj.owner    
+        return request.user == obj.owner
 
     def get_like_id(self, obj):
         user = self.context['request'].user

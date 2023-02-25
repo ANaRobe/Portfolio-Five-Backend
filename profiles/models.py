@@ -7,7 +7,10 @@ class Profile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=100, blank=True)
     last_name = models.CharField(max_length=100, blank=True)
-    image = models.ImageField(upload_to='images/', default='../avatar_default_g1gi5h')
+    image = models.ImageField(
+        upload_to='images/',
+        default='../avatar_default_g1gi5h'
+        )
     about = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now=True)
     last_edit = models.DateTimeField(auto_now=True)
@@ -25,4 +28,3 @@ def create_profile(sender, instance, created, **kwargs):
 
 
 post_save.connect(create_profile, sender=User)
-

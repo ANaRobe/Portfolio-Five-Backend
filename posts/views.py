@@ -13,9 +13,18 @@ class PostList(generics.ListCreateAPIView):
         likes_count=Count('likes', distinct=True),
         comments_count=Count('comment', distinct=True)
     ).order_by('-created_on')
-    filter_backends = [filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend]
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend
+        ]
     search_fields = ['owner__username', 'title', 'category', ]
-    filterset_fields = ['owner__followed__owner__profile', 'likes__owner__profile', 'owner__profile', 'category']
+    filterset_fields = [
+        'owner__followed__owner__profile',
+        'likes__owner__profile',
+        'owner__profile',
+        'category'
+        ]
     ordering_fields = [
         'likes_count',
         'comments_count',

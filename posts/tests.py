@@ -59,4 +59,3 @@ class PostDetailViewTests(APITestCase):
         self.client.login(username='jimmy', password='12345678')
         response = self.client.put('/posts/2/', {'title': 'updated title'})
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        
